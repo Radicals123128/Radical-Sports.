@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rentals & Special Offers</title>
+<style>
+    /* CSS for animations */
+    @keyframes fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    .fade-in {
+        animation: fade-in 1s ease-in-out;
+    }
+    
+    /* Other CSS styles */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f2f2f2;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333;
+    }
+
+    .rental-item {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        transition: transform 0.3s;
+    }
+
+    .rental-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .rental-item img {
+        max-width: 100%;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    .rental-item h2 {
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .rental-item p {
+        color: #666;
+    }
+
+    .special-offer {
+        background-color: #3498db;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    /* JavaScript for animations */
+    .hidden {
+        display: none;
+    }
+
+    .show {
+        display: block;
+        animation: fade-in 1s ease-in-out;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Rentals & Special Offers</h1>
+
+    <div class="rental-item fade-in">
+        <img src="https://www.budget.com.sg/images/Nov-Banner.jpg" alt="Car Rental">
+        <h2>Car Rental</h2>
+        <p>Rent a car for your journey. Choose from a variety of models to suit your needs.</p>
+        <p><strong>Price:</strong> $50 per day</p>
+    </div>
+
+    <div class="rental-item fade-in">
+        <img src="https://d36g7qg6pk2cm7.cloudfront.net/assets/og_city_home-49f86ab1b6f03e6ac461849bf5e5aabf9d1a28660ae121e99bde93444e38b973.jpg" alt="Bike Rental">
+        <h2>Bike Rental</h2>
+        <p>Rent a bike to explore the city or countryside. Enjoy the freedom of two wheels.</p>
+        <p><strong>Price:</strong> $20 per day</p>
+    </div>
+
+    <div id="special-offer" class="special-offer hidden">
+        <h2>Special Offer!</h2>
+        <p>Book now and get 20% off on your first rental!</p>
+    </div>
+</div>
+
+<script>
+    // JavaScript for showing special offer after 5 seconds
+    setTimeout(function() {
+        var specialOffer = document.getElementById("special-offer");
+        specialOffer.classList.remove("hidden");
+        specialOffer.classList.add("show");
+    }, 5000);
+</script>
+
+</body>
+</html>

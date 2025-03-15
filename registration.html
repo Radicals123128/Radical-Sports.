@@ -1,0 +1,126 @@
+<html>
+<style>
+input[type=text], select {
+  width: 50%;
+  padding: 5px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #0c0c0c;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 25%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+input[type=reset] {
+  width: 25%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=reset]:hover {
+  background-color: #45a049;
+}
+
+input[type=text]:focus {
+  background-color: rgb(164, 241, 164);
+}
+
+div {
+  border-radius: 5px;
+  background-color: #e7af8e;
+  padding: 20px;
+}
+.center {
+  border: 5px solid;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+}
+</style>
+<body>
+  <div class="center">
+    <h1>Registration Form</h1>
+    <form id="registrationForm" action="#">
+        <!-- Your form fields here -->
+        <label for="fname">Name</label>
+        <input type="text" id="fname" name="firstname" placeholder="Your name.."><br>
+
+        <label for="lname">Address</label>
+        <input type="text" id="lname" name="lastname" placeholder="Your Address"><br>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+          
+        <label for="phone">Enter a phone number:</label>
+        <input type="text" id="phone" name="phone" placeholder="1234567890" ><br><br>
+
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required><br><br>
+        
+        <label for="password">Password:</label>
+        <input type="text" id="password" name="password" required><br><br>
+
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="male" checked>
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label><br><br>
+
+        <label for="country">Country</label>
+        <select id="country" name="country">
+          <option value="India">India</option>
+          <option value="China">China</option>
+          <option value="USA">USA</option>
+          <option value="Nepal">Nepal</option>
+          <option value="UK">UK</option>
+          <option value="Other">Other</option>
+        </select><br>
+
+        <label for="book">Title of Book</label>
+        <input type="text" id="book" name="book" placeholder="for e.g Wings of fire" required><br><br>
+
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+    </form>
+    <form id="registrationForm" action="register.php" method="post">
+      <!-- Your form fields here -->
+    </form>
+</div>
+
+<script>
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form submission
+        
+        // Show popup message
+        alert("Registered successfully!");
+        
+        // You can add additional logic here, like submitting the form data using AJAX
+    });
+</script>
+</body>
+</html>
+
+</body>
+</html>

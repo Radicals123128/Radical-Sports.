@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Now</title>
+<link rel="stylesheet" href="styles.css"> <!-- Link your CSS file -->
+<style>
+    /* styles.css */
+
+/* Button Styles */
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  outline: none;
+  margin-bottom: 20px;
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Button click effect */
+button:active {
+  transform: translateY(2px);
+}
+
+/* Form Styles */
+.booking-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.booking-form h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+form {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="date"],
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input[type="date"] {
+  height: 40px; /* Adjust height for date input */
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+button[type="submit"]:active {
+  transform: translateY(2px);
+}
+
+/* Payment Section Styles */
+.payment-section {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.payment-icons {
+  margin-top: 20px;
+}
+
+.discount-text {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 18px;
+  color: green;
+}
+
+/* Background Image */
+body {
+  background-image: url('https://i.pinimg.com/originals/df/19/31/df19315e85722405c0d24b7b3be757dd.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/* Google Fonts - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background-color: #e3f2fd;
+}
+.container{
+    position: relative;
+    max-width: 320px;
+    width: 100%;
+    margin: 80px auto 30px;
+}
+.select-btn{
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+.select-btn .btn-text{
+    font-size: 17px;
+    font-weight: 400;
+    color: #333;
+}
+.select-btn .arrow-dwn{
+    display: flex;
+    height: 21px;
+    width: 21px;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 50%;
+    background: #6e93f7;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+.select-btn.open .arrow-dwn{
+    transform: rotate(-180deg);
+}
+.list-items{
+    position: relative;
+    margin-top: 15px;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+.select-btn.open ~ .list-items{
+    display: block;
+}
+.list-items .item{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    height: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 0 15px;
+    border-radius: 8px;
+}
+.list-items .item:hover{
+    background-color: #e7edfe;
+}
+.item .item-text{
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+}
+.item .checkbox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 16px;
+    width: 16px;
+    border-radius: 4px;
+    margin-right: 12px;
+    border: 1.5px solid #c0c0c0;
+    transition: all 0.3s ease-in-out;
+}
+.item.checked .checkbox{
+    background-color: #4070f4;
+    border-color: #4070f4;
+}
+.checkbox .check-icon{
+    color: #fff;
+    font-size: 11px;
+    transform: scale(0);
+    transition: all 0.2s ease-in-out;
+}
+.item.checked .check-icon{
+    transform: scale(1);
+}
+</style>
+</head>
+<body>
+
+<!-- Booking Form -->
+<div class="booking-form">
+    <h2>Book Now</h2>
+    <form id="bookingForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required placeholder="Enter your name">
+
+      <label for="member">Member:</label>
+      <input type="text" id="member" name="member" required placeholder="Enter number of members">
+
+      <label for="place">Place:</label>
+      <input type="text" id="place" name="place" required placeholder="Enter your preferred place">
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required placeholder="Enter your email">
+ 
+
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="event">Villa:</label>
+        <select id="event" name="event[]" multiple required>
+          <option value="Parasailing">Villa 1</option>
+          <option value="Sea Kayaking">Villa 2</option>
+          <option value="Scuba Diving">Villa 3</option>
+          
+          <!-- Add more options if needed -->
+        </select>
+        <div class="container">
+          <div class="select-btn">
+              <span class="btn-text">Select Events</span>
+              <span class="arrow-dwn">
+                  <i class="fa-solid fa-chevron-down"></i>
+              </span>
+          </div>
+          <ul class="list-items">
+              <li class="item">
+                  <span class="checkbox">
+                      <i class="fa-solid fa-check check-icon"></i>
+                  </span>
+                  <span class="item-text">Parasailing</span>
+              </li>
+              <li class="item">
+                  <span class="checkbox">
+                      <i class="fa-solid fa-check check-icon"></i>
+                  </span>
+                  <span class="item-text">Sea Kayaking</span>
+              </li>
+              <li class="item">
+                  <span class="checkbox">
+                      <i class="fa-solid fa-check check-icon"></i>
+                  </span>
+                  <span class="item-text">Scuba Diving</span>
+              </li>
+              <li class="item">
+                  <span class="checkbox">
+                      <i class="fa-solid fa-check check-icon"></i>
+                  </span>
+                  <span class="item-text">Kite Boarding</span>
+              </li>
+              <li class="item">
+                  <span class="checkbox">
+                      <i class="fa-solid fa-check check-icon"></i>
+                  </span>
+                  <span class="item-text">Speed Boat Ride</span>
+              </li>
+              <li class="item">
+                  <span class="checkbox">
+                      <i class="fa-solid fa-check check-icon"></i>
+                  </span>
+                  <span class="item-text">Stand Up Paddle-Boarding</span>
+              </li>
+              <p>Discover More Adventures</p>
+              <li class="item">
+                <span class="checkbox">
+                    <i class="fa-solid fa-check check-icon"></i>
+                </span>
+                <span class="item-text">Jet Skiing</span>
+            </li>
+            <li class="item">
+              <span class="checkbox">
+                  <i class="fa-solid fa-check check-icon"></i>
+              </span>
+              <span class="item-text">Snorkeling</span>
+          </li>
+          <li class="item">
+            <span class="checkbox">
+                <i class="fa-solid fa-check check-icon"></i>
+            </span>
+            <span class="item-text">Parasailing</span>
+        </li>
+        <p>Special Features</p>
+        <li class="item">
+          <span class="checkbox">
+              <i class="fa-solid fa-check check-icon"></i>
+          </span>
+          <span class="item-text">DJ Night</span>
+      </li>
+      <li class="item">
+        <span class="checkbox">
+            <i class="fa-solid fa-check check-icon"></i>
+        </span>
+        <span class="item-text">Dinner Cruise</span>
+    </li>
+    <li class="item">
+      <span class="checkbox">
+          <i class="fa-solid fa-check check-icon"></i>
+      </span>
+      <span class="item-text">Adventure Cruise</span>
+  </li>
+          </ul>
+      </div>
+      <script>
+        const selectBtn = document.querySelector(".select-btn"),
+      items = document.querySelectorAll(".item");
+
+selectBtn.addEventListener("click", () => {
+    selectBtn.classList.toggle("open");
+});
+
+items.forEach(item => {
+    item.addEventListener("click", () => {
+        item.classList.toggle("checked");
+
+        let checked = document.querySelectorAll(".checked"),
+            btnText = document.querySelector(".btn-text");
+
+            if(checked && checked.length > 0){
+                btnText.innerText = `${checked.length} Selected`;
+            }else{
+                btnText.innerText = "Select Language";
+            }
+    });
+})
+      </script>
+
+
+        <!-- Payment Section -->
+        <div class="payment-section">
+            <h3>Payment Options</h3>
+            <p>Pay with UPI:</p>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTophBlrjXxh7zqsT1cAgqnTK-TWM_8J5N1f-yN2CGhDQ&s" alt="UPI" width="50px">
+            <br>
+            <img src="https://cdn.icon-icons.com/icons2/1521/PNG/512/qrcodehd_106111.png" alt="QR Code" width="150px">
+            <div class="payment-icons">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQL6kgmZWlCDqNbrmMGPgGuT4pE0RsJENeumAF9FpBPg&s" alt="Payment App 1" width="50px">
+                <img src="https://bl-i.thgim.com/public/info-tech/jxp5bs/article33130573.ece/alternates/FREE_1200/google-pay" alt="Payment App 2" width="50px">
+                <!-- Add more payment app icons as needed -->
+            </div>
+        </div>
+
+        <!-- Book Now Button -->
+        <button type="submit" id="bookNowBtn">Book Now</button>
+        
+        <!-- Cancel Button -->
+        <a href="new.html"><button type="button" id="cancelBtn">Cancel</button></a>
+        
+    </form>
+</div>
+
+<!-- Discount Offer -->
+<p class="discount-text">Get 30% discount on your booking!</p>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Book Now Button Click Event
+  document.getElementById("bookNowBtn").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent form submission
+    var form = document.getElementById("bookingForm");
+    var name = form.elements["name"].value;
+    var member = form.elements["member"].value;
+    var place = form.elements["place"].value;
+    var date = form.elements["date"].value;
+    var events = [...form.elements["event"]].filter(option => option.selected).map(option => option.value).join(', ');
+
+    // Validate form fields
+    if (name && member && place && date && events) {
+      // Send booking details to server (simulate here)
+      // Display success message
+      alert("Booking successful! Email has been sent to " + name );
+      // Clear form fields
+      // Redirecting to the home page
+            window.location.href = "new.html"; // Change "index.html" to your home page URL
+      form.reset();
+    } else {
+      alert("Please fill in all fields.");
+    }
+  });
+
+  // Cancel Button Click Event
+  document.getElementById("cancelBtn").addEventListener("click", function() {
+    // Redirect to home page (replace with actual URL)
+    window.location.href = "new.html";
+  });
+});
+
+
+</script>
+
+</body>
+</html>

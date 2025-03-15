@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #ba1d71;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+form {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="submit"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+input[type="submit"] {
+    background-color: #c41b1b;
+    color: #fff;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #20ba3e;
+}
+
+.hidden {
+    display: none;
+}
+
+#loginSuccessMessage {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #1ab1df;
+    color: #fff;
+    border-radius: 5px;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Login to Your Account</h1>
+    </header>
+    <form id="loginForm" action="login.php" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+        <input type="submit" value="Login">
+    </form>
+    <div id="loginSuccessMessage" class="hidden">Login Successful!</div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            // Prevent the form from submitting
+            event.preventDefault();
+            // Show the "Login Successful" message
+            document.getElementById('loginSuccessMessage').classList.remove('hidden');
+            // Optional: You can redirect the user to another page after showing the message
+            // window.location.href = 'dashboard.html'; // Redirect to dashboard page
+        });
+    </script>
+</body>
+</html>
